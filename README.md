@@ -4,32 +4,35 @@
 
 ## About
 
-A simple CLI chat tool to easily interface with OpenAI's LLM models.
+A simple CLI chat tool designed for easy interaction with OpenAI's models.
 
 ## Features
 
-- Basic CLI chat interface to OpenAI’s LLM models.
-- Web scraping for a provided link (supports JavaScript scraping).
-- YouTube scraping; scraping the transcript from a video.
-- Multi-line support; easily copy and paste new lines into the CLI.
-- Generate images using OpenAI's image models.
-- Supports interactive and non-interactive mode for chatting.
+- Basic CLI chat interface with OpenAI’s LLM models.
+- Web scraping capability for provided links (supports JavaScript scraping).
+- YouTube scraping functionality for extracting video transcripts.
+- Answer-Search feature utilizing the Brave API, similar to the Perplexity AI search engine.
+    - Click [HERE](https://www.youtube.com/watch?v=pTHk5G6TzH4) to view a demo of the Answer-Search feature.
+- Multi-line support for easy copying and pasting into the CLI.
+- Ability to generate images using OpenAI's image models.
+    - Uses CLImage to display images directly in the terminal.
+- Supports both interactive and non-interactive chat modes.
 
 ## Demo
 
 <div align="center">
 
-[![Demo Video](./assets/thumbnail.png)](https://www.youtube.com/watch?v=YcfFC1IU_SA)
+[![Demo Video](./assets/thumbnail.png)](https://www.youtube.com/watch?v=zRnMu6OHNtU)
 
-*Click the image to view the YouTube video or click here: https://www.youtube.com/watch?v=qOOzjTdmg7w.*
+*Click the image or visit https://www.youtube.com/watch?v=zRnMu6OHNtU*
 
 </div>
 
 ## How To Set Up?
 
-### 1. Install cha
+### 1. Install `cha`
 
-Run the following command to install or upgrade `cha`:
+Clone this repository, navigate to its directory, and run the following command to install or upgrade `cha`:
 
 ```bash
 pip3 install --upgrade .
@@ -39,62 +42,49 @@ pip3 install --upgrade .
 
 1. Create a `.env` file in the root directory.
 
-2. Get your OpenAI API key [HERE](https://platform.openai.com/api-keys).
+2. Obtain your OpenAI API key [HERE](https://platform.openai.com/api-keys). If you want to use Answer-Search, obtain your Brave API key [HERE](https://brave.com/search/api/).
 
-3. Add your OpenAI API key to the `.env` file, following this format:
+3. Add your keys to the `.env` file, using this format:
 
-```env
-# Replace YOUR_KEY_HERE with your actual API key
-export OPENAI_API_KEY="YOUR_KEY_HERE"
-```
+    ```env
+    # Replace YOUR_KEY_HERE with your OpenAI API key
+    OPENAI_API_KEY="YOUR_KEY_HERE"
 
-4. Activate the environment variables:
+    # (Optional) Replace YOUR_KEY_HERE with your Brave API key
+    BRAVE_API_KEY="YOUR_KEY_HERE"
+    ```
+
+4. To activate the environment variables, run:
 
 ```bash
 source .env
 ```
 
-### 3. Run cha
+### 3. Run `cha`
 
-Execute the main script by running:
+To start the tool, execute:
 
 ```bash
 cha
 ```
 
-### 5. Optionally, setup an alias/command for cha
+### 4. (Optional) Setup an Alias/Command for `cha`
 
-You can create a useful alias/command to simplify the use of `cha`. Add this to your `.zshrc` or `.bashrc`. For example, here is a command I have in my `.zshrc`:
+For easier use of `cha`, consider setting up an alias or command. To add the preferred alias/command for Cha, run the appropriate command for your shell:
 
 ```bash
-"""
-For this function/code:
-- If no arguments are provided, it will run Cha in interactive mode (chat interface).
-- If an argument is provided, it will run Cha in non-interactive mode (sends one string, your argument).
-"""
+# if using a zsh shell
+echo 'alias cha="path/to/cha"' >> $HOME/.zshrc
 
-chatgpt () {
-    DEFAULT_MODEL="gpt-4-turbo-preview"
-
-    source /Users/mehmet/.custom/.env
-
-    if [[ "$1" == "-f" && -n "$2" ]]; then
-        cha -m $DEFAULT_MODEL -f "$2"
-    elif [ $# -eq 0 ]; then
-        cha --model $DEFAULT_MODEL
-    else
-        cha -m $DEFAULT_MODEL -s "$1"
-    fi
-
-    unset OPENAI_API_KEY
-}
+# if using a bash shell
+echo 'alias cha="path/to/cha"' >> $HOME/.bashrc
 ```
 
-Now you should be all set!
+You're now ready to go!
 
 ## Credits
 
-- OpenAI Documentation
-- ChatGPT (GPT-4)
-- Ollama's CLI tool
+- [OpenAI Documentation](https://platform.openai.com/docs/introduction)
+- [ChatGPT (GPT-4)](https://chat.openai.com/)
+- [Ollama's CLI](https://ollama.com/)
 
